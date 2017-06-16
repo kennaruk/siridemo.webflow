@@ -36,7 +36,7 @@ router.get('/team/:team', function(req, res, next) {
       partnership: true,
       featured: true
     }; //TODO: change to use partner instead of dummy
-    res.render('detail_team.ejs', { partner: dummy });
+    res.render('detail_team.ejs', { partner: partner });
   })
 });
 module.exports = router;

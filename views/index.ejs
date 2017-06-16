@@ -46,7 +46,7 @@
         </div>
         <% if(partners['featured'].length != 0) { %>
           <% for(var i = 0 ; i < partners['featured'].length ; i++) { %>
-            <div class="w-dyn-item"><a class="list-team-name listwhite" href="/team/partners['featured'][i].team"><%= partners['featured'][i].name %></a>
+            <div class="w-dyn-item"><a class="list-team-name listwhite" href="/team/<%=partners['featured'][i].team%>"><%= partners['featured'][i].name %></a>
               <h1 class="hero-text motto subherotext"><%= partners['featured'][i].motto %> </h1>
             </div>
           <% } %>
@@ -90,14 +90,12 @@
                   </div>
                   <% } else { %>
                     <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                      <% if(partners[category][i].categories == "Property Tech") { %>
-                        <div class="w-dyn-item">
-                          <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                          <div class="short-desc">
-                            <%= partners[category][i].motto %>
-                          </div>
+                      <div class="w-dyn-item">
+                        <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                        <div class="short-desc">
+                          <%= partners[category][i].motto %>
                         </div>
-                      <% } %>
+                      </div>
                     <% } %>
                   <% } %>
                 </div>
@@ -118,14 +116,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -145,14 +141,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -172,14 +166,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -199,14 +191,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -226,14 +216,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -254,14 +242,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -281,14 +267,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -308,14 +292,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -335,14 +317,12 @@
                 </div>
                 <% } else { %>
                   <% for(var i = 0 ; i < partners[category].length ; i++) { %>
-                    <% if(partners[category][i].categories == "Property Tech") { %>
-                      <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
-                        <div class="short-desc">
-                          <%= partners[category][i].motto %>
-                        </div>
+                    <div class="w-dyn-item">
+                      <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                      <div class="short-desc">
+                        <%= partners[category][i].motto %>
                       </div>
-                    <% } %>
+                    </div>
                   <% } %>
                 <% } %>
               </div>
@@ -363,7 +343,7 @@
                   <% for(var j = 0 ; j < partners[categories[i]].length ; j++) { %>
                     <% if(partners[categories[i]].partnership == true) { %>
                       <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/partners[category][i].team"><%= partners[category][i].name %></a>
+                        <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
                         <div class="short-desc">
                           <%= partners[category][i].motto %>
                         </div>
@@ -406,7 +386,7 @@
                 <% if(allPartners.length != 0) { %>
                   <% for(var i = 0 ; i < allPartners.length ; i++) { %>
                     <div class="w-dyn-item">
-                      <a class="categories team-list" href="/team/allPartners[i].team"><%= allPartners[i].name %></a>
+                      <a class="categories team-list" href="/team/<%=allPartners[i].team%>"><%= allPartners[i].name %></a>
                       <div class="short-desc">
                         <%= allPartners[i].motto %>
                       </div>

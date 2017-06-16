@@ -31,31 +31,20 @@ var db = mongoose.connect(uri, function(err, res) {
     console.log('ERROR connecting to: ' + uri + '. ' + err);
   } else {
     console.log('Succeed connected to MongoDB');
-		// todb.getAllPartners(function(err, partners) {
-		// 	console.log(partners);
-		// })
-    // todb.insertPartnership(partnerObj, function(err, partners) {
-    //   if(err) {
-    //     console.log("insertPartnership err. "+err);
-    //   } else {
-    //     console.log("insertPartnership success");
-    //   }
-    // });
   }
 });
-// mongoose.connection.on('error', () => {
-//   console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
-//   process.exit(1);
-// });
 todb = require('./siri-db-mongo.js');
 todb.initDatabase(mongoose);
-
-// console.log(partnerObj);
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   console.log("Database connected");
-//   // db.close();
-// });
+/* var fs = require('fs'); NOTE: Sync File From JSON DUMMY Database
+var partnerArray = JSON.parse( fs.readFileSync('partners.json', 'utf8') );
+console.log(partnerArray);
+todb.insertPartnership(partnerArray, function(err, partners) {
+	if(!err)
+		console.log('insert partner succeed');
+	else {
+		console.log('insert partner err');
+	}
+}); */
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

@@ -45,7 +45,7 @@ exports.initDatabase = function(mongoose, callback) {
           objs[categories[i]] = partners;
           for(var cnt = 0 ; cnt < partners.length ; cnt++) {
             if(partners[cnt].featured == true)
-              objs[featured].push(partners[cnt]);
+              objs['featured'].push(partners[cnt]);
           }
         } else {
           console.log(err);
