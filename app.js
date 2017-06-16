@@ -35,16 +35,10 @@ var db = mongoose.connect(uri, function(err, res) {
 });
 todb = require('./siri-db-mongo.js');
 todb.initDatabase(mongoose);
-/* var fs = require('fs'); NOTE: Sync File From JSON DUMMY Database
-var partnerArray = JSON.parse( fs.readFileSync('partners.json', 'utf8') );
-console.log(partnerArray);
-todb.insertPartnership(partnerArray, function(err, partners) {
-	if(!err)
-		console.log('insert partner succeed');
-	else {
-		console.log('insert partner err');
-	}
-}); */
+/* NOTE: to refetch database from json file comment this out
+	todb.reFetchDatabaseFromJSON();
+*/
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

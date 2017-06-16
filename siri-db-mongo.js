@@ -14,6 +14,25 @@ exports.initDatabase = function(mongoose, callback) {
     featured: { type: Boolean, default: false }
     })
   );
+  exports.reFetchDatabaseFromJSON = function() {
+    partnership.remove({}).exec(function (err, partners) { //NOTE: Remove all in database and fetch new on json file
+      if(err)
+        console.log('remove collection in mongodb err.');
+      else {
+        //NOTE: Sync File From JSON DUMMY Database
+        var fs = require('fs');
+        var partnerArray = JSON.parse( fs.readFileSync('partners.json', 'utf8') );
+        console.log(partnerArray);
+        partnership.insertMany(partnerArray, function(err, partners) {
+          if(!err)
+            console.log('refetch succeed');
+          else {
+            console.log('refetch err');
+          }
+        });
+      }
+    });
+  }
 
   exports.insertPartnership = function(obj, callback) {
     partnership.insertMany(obj, function(err, partners) {

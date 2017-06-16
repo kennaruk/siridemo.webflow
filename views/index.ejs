@@ -341,11 +341,11 @@
                 <% var partnerCnt = 0; %>
                 <% for(var i = 0 ; i < categories.length ; i++) { %>
                   <% for(var j = 0 ; j < partners[categories[i]].length ; j++) { %>
-                    <% if(partners[categories[i]].partnership == true) { %>
+                    <% if(partners[categories[i]][j].partnership == true) { %>
                       <div class="w-dyn-item">
-                        <a class="categories team-list" href="/team/<%=partners[category][i].team%>"><%= partners[category][i].name %></a>
+                        <a class="categories team-list" href="/team/<%=partners[categories[i]][j].team%>"><%= partners[categories[i]][j].name %></a>
                         <div class="short-desc">
-                          <%= partners[category][i].motto %>
+                          <%= partners[categories[i]][j].motto %>
                         </div>
                       </div>
                       <% partnerCnt++ %>
