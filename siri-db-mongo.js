@@ -33,7 +33,12 @@ exports.initDatabase = function(mongoose, callback) {
       }
     });
   }
-
+  exports.deletePartner = function(id, callback) {
+    partnership.remove({_id: id}).exec(function(err, partner) {
+      if(!err)
+        callback(err, partner);
+    });
+  }
   exports.insertPartnership = function(obj, callback) {
     partnership.insertMany(obj, function(err, partners) {
       callback(err, partners);
@@ -81,6 +86,13 @@ exports.initDatabase = function(mongoose, callback) {
       } else {
         console.log(err);
       }
+    });
+  }
+  exports.updatePartner = function(obj, callback) {
+    // console.log('team', obj.team);
+    partnership.update( {team: obj.team}, {$set: obj}, function(err, partner) {
+      // console.log("updatePartner: ", partner);
+      callback(err, partner);
     });
   }
 }

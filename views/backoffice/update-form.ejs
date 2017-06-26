@@ -1,0 +1,124 @@
+<form class="form-horizontal form-label-left" novalidate action='/backoffice/update-team' method='post'>
+  <span class="section">Team Information</span>
+
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12">ID</label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="text" name="_id" value="<%=partner._id%>" class="form-control" readonly="readonly" placeholder="<%=partner._id%>">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="1" data-validate-words="1" name="name" placeholder="" required="required" type="text">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Team Tag <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input id="team" name="team" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Motto <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input id="motto" name="motto" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+    <%# <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="motto" id="motto" name="motto" data-validate-linked="email" required="required" class="form-control col-md-7 col-xs-12">
+    </div>%>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Category <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12" id="cat">
+      <select id="categorie" name="categorie" class="form-control" required>
+        <option value="">Choose..</option>
+        <% for(var i = 0 ; i < categories.length ; i++) { %>
+          <option value="<%=categories[i]%>"><%=categories[i]%></option>
+        <% } %>
+      </select>
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="website">Website URL <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="url" id="website" name="website" required="required" placeholder="www.website.com" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Slide URL <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="url" id="slide" name="slide" required="required" placeholder="drive.google.com/slide" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label for="password" class="control-label col-md-3">Cover URL</label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <input type="url" id="cover" name="cover" required="required" placeholder="images.google.co.th" class="form-control col-md-7 col-xs-12">
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Intro <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea id="intro" required="required" name="intro" class="form-control col-md-7 col-xs-12"></textarea>
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Comment <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea id="comment" required="required" name="comment" class="form-control col-md-7 col-xs-12"></textarea>
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Result <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <textarea id="result" required="required" name="result" class="form-control col-md-7 col-xs-12"></textarea>
+    </div>
+  </div>
+
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Partnership <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div id="partnership" class="btn-group" data-toggle="buttons">
+        <label id="partnership-true" class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+          <input id="partnership-btn-true" type="radio" name="partnership" value="true" required> &nbsp; Yes &nbsp;
+        </label>
+        <label id="partnership-false" class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+          <input id="partnership-btn-false" type="radio" name="partnership" value="false" required> &nbsp; No &nbsp;
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="item form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Featured <span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div id="featured" class="btn-group" data-toggle="buttons">
+        <label id="featured-true" class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+          <input id="featured-btn-true" type="radio" name="featured" value="true" required checked> &nbsp; Yes &nbsp;
+        </label>
+        <label id="featured-false" class="btn btn-danger" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+          <input id="featured-btn-false" type="radio" name="featured" value="false" required> &nbsp; No &nbsp;
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-6 col-md-offset-3">
+      <button type="submit" class="btn btn-primary">Cancel</button>
+      <button id="send" type="submit" class="btn btn-success">Submit</button>
+      <button id="delete" type="button" onClick="deleteTeam('<%=partner._id%>')" class="btn btn-danger" style="float: right;">Delete</button>
+    </div>
+  </div>
+</form>

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 
 var index = require('./routes/index');
+var backoffice = require('./routes/backoffice');
 var users = require('./routes/users');
 const mongoose = require('mongoose');
 
@@ -53,6 +54,7 @@ app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/backoffice', backoffice);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
