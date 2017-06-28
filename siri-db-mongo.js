@@ -14,6 +14,42 @@ exports.initDatabase = function(mongoose, callback) {
     featured: { type: Boolean, default: false }
     })
   );
+  userModel = mongoose.model('user', new mongoose.Schema({
+      username: { type: String, trim: true, unique: true },
+      password: { type: String, trim: true }
+    })
+  );
+  exports.insertUser = function(user, callback) {
+    var obj = [];
+    obj.push(user);
+    userModel.insertMany(obj, function(err, returnUser) {
+      if(!err)
+        callback(err, returnUser);
+      else {
+        console.log(err);
+      }
+    });
+  }
+  exports.findUser = function(username, callback) {
+    userModel.findOne({ username: username }, function(err, oneUser) {
+      console.log('find user: ', oneUser);
+      if(!err)
+        if(oneUser != null)
+          callback(oneUser.password);
+        else
+          callback(null);
+      else {
+        console.log(err);
+      }
+    });
+  }
+  todb = require('./siri-db-mongo.js');
+  // todb.insertUser({ username: 'admin', password: 'password' }, function(err, user) {
+  // 	console.log('insert success: ', user);
+  // });
+  // todb.findUser('admin', function(err, user) {
+  //   console.log(user);
+  // });
   exports.reFetchDatabaseFromJSON = function() {
     partnership.remove({}).exec(function (err, partners) { //NOTE: Remove all in database and fetch new on json file
       if(err)

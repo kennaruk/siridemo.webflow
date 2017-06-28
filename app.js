@@ -36,6 +36,7 @@ var db = mongoose.connect(uri, function(err, res) {
 });
 todb = require('./siri-db-mongo.js');
 todb.initDatabase(mongoose);
+
 /* NOTE: to refetch database from json file comment this out
 	todb.reFetchDatabaseFromJSON();
 */

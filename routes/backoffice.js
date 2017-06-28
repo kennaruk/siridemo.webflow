@@ -1,10 +1,56 @@
 var express = require('express');
 var router = express.Router();
+var session = require('express-session');
+router.use(session({
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true
+}));
+// Authentication and Authorization Middleware
+var auth = function(req, res, next) {
+  if (req.session && req.session.admin)
+    return next();
+  else
+    return res.render('backoffice/login.ejs');;
+};
 var categories = ["Property Tech", "Blockchain Tech", "Robotic Tech"
 , "Office Tech", "Food Tech", "Health Tech", "E-Commerce"
 , "Transportation & Logistics", "Agriculture Tech", "Insure Tech"];
+router.get('/login', function(req, res, next) {
+  res.render('backoffice/login.ejs');
+});
+router.post('/login', function(req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
+  todb.findUser(username, function(pwd) {
+    console.log('password: ', password,' pwd: ', pwd);
+    if(pwd != null) {
+      if(password === pwd) {
+        req.session.user = username;
+        req.session.admin = true;
+        todb.getAllPartners(function(err, partners) {
+          partners = partners.sort(function(a,b) {
+            return a.name.toLowerCase() > b.name.toLowerCase();
+          });
+          res.render('backoffice/form_validation.ejs', { partners: partners, categories: categories });
+        });
+      } else {
+        console.log('password != pwd');
+        res.send('login failed');
+      }
+    } else {
+      console.log('pwd null');
+      res.send('login failed');
+    }
+  });
+});
+// Logout endpoint
+router.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.render('backoffice/login.ejs');;
+});
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', auth, function(req, res, next) {
   todb.getAllPartners(function(err, partners) {
     partners = partners.sort(function(a,b) {
       return a.name.toLowerCase() > b.name.toLowerCase();
@@ -12,7 +58,7 @@ router.get('/', function(req, res, next) {
     res.render('backoffice/form_validation.ejs', { partners: partners, categories: categories });
   });
 });
-router.get('/team/:team', function(req, res, next) {
+router.get('/team/:team', auth, function(req, res, next) {
   var team = req.params.team;
   todb.findTeam(team, function(err, partner) {
     todb.getAllPartners(function(err, partners) {
@@ -25,7 +71,7 @@ router.get('/team/:team', function(req, res, next) {
 
   });
 });
-router.post('/team', function(req, res, next) {
+router.post('/team', auth, function(req, res, next) {
   todb.getAllPartners(function(err, partners) {
     partners = partners.sort(function(a,b) {
       return a.name.toLowerCase() > b.name.toLowerCase();
@@ -33,7 +79,7 @@ router.post('/team', function(req, res, next) {
     res.render('backoffice/form_validation.ejs', { partners: partners, categories: categories });
   });
 });
-router.post('/new-team', function(req, res, next) {
+router.post('/new-team', auth, function(req, res, next) {
   var obj = req.body;
   obj.intro = JSON.stringify(obj.intro);
   obj.comment = JSON.stringify(obj.comment);
@@ -65,7 +111,7 @@ router.post('/new-team', function(req, res, next) {
     });
   });
 });
-router.post('/delete-team', function(req, res, next) {
+router.post('/delete-team', auth, function(req, res, next) {
   var id = req.body.id;
   todb.deletePartner(id, function(err, partner) {
     todb.getAllPartners(function(err, partners) {
@@ -76,7 +122,7 @@ router.post('/delete-team', function(req, res, next) {
     });
   });
 });
-router.post('/update-team', function(req, res, next) {
+router.post('/update-team', auth, function(req, res, next) {
   var name = req.body.name,
   team = req.body.team,
   motto = req.body.motto,
