@@ -30,6 +30,16 @@ exports.initDatabase = function(mongoose, callback) {
       }
     });
   }
+  exports.getAllAdmin = function(callback) {
+    userModel.find({}, 'username', function(err, admins) {
+      callback(err, admins);
+    });
+  }
+  exports.deleteAdmin = function(_id, callback) {
+    userModel.remove({_id:_id}, function(err, admin) {
+      callback(err, admin);
+    });
+  }
   exports.findUser = function(username, callback) {
     userModel.findOne({ username: username }, function(err, oneUser) {
       console.log('find user: ', oneUser);

@@ -58,6 +58,41 @@ router.get('/', auth, function(req, res, next) {
     res.render('backoffice/form_validation.ejs', { partners: partners, categories: categories });
   });
 });
+router.get('/admin-user', auth, function(req, res, next) {
+  todb.getAllPartners(function(err, partners) {
+    partners = partners.sort(function(a,b) {
+      return a.name.toLowerCase() > b.name.toLowerCase();
+    });
+    todb.getAllAdmin(function(err, admins) {
+      console.log(admins);
+      res.render('backoffice/admin-user.ejs', { partners: partners, categories: categories, admins: admins });
+    });
+  });
+});
+router.post('/new-admin', auth, function(req, res, next) {
+  console.log(req.body);
+  var username = req.body.username;
+  var password = req.body.password;
+  var obj = {username: username, password: password};
+  todb.insertUser(obj, function(err, user) {
+    todb.getAllPartners(function(err, partners) {
+      partners = partners.sort(function(a,b) {
+        return a.name.toLowerCase() > b.name.toLowerCase();
+      });
+      todb.getAllAdmin(function(err, admins) {
+        console.log(admins);
+        res.render('backoffice/admin-user.ejs', { partners: partners, categories: categories, admins: admins });
+      });
+    });
+  });
+});
+router.post('/delete-admin', auth, function(req, res, next) {
+  var _id = req.body._id;
+  todb.deleteAdmin(_id, function(err, admin) {
+    console.log(admin, ' was deleted');
+  })
+  res.send('delete service success');
+});
 router.get('/team/:team', auth, function(req, res, next) {
   var team = req.params.team;
   todb.findTeam(team, function(err, partner) {
